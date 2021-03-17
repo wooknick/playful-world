@@ -1,0 +1,10 @@
+{
+  "name": "playful-world",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "wooknick <wooknick@naver.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  }
+}
