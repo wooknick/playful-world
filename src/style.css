@@ -9,6 +9,15 @@ body {
   display: flex;
   flex-direction: column;
 }
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+}
+a:link {
+  color: black;
+}
 .item {
   width: 100%;
   height: 40px;

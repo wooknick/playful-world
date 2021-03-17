@@ -1,10 +1,16 @@
 {
+  "homepage": "https://wooknick.github.io/playful-world",
   "name": "playful-world",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.html",
   "author": "wooknick <wooknick@naver.com>",
   "license": "MIT",
   "devDependencies": {
+    "cssnano": "^4.1.10",
     "gh-pages": "^3.1.0"
+  },
+  "scripts": {
+    "pre-deploy": "parcel build src/index.html -d docs/",
+    "deploy": "npm run pre-deploy && gh-pages -d docs"
   }
 }
