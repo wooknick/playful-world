@@ -1,5 +1,8 @@
 import "./style.css";
-console.log("load");
+var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  navigator.userAgent
+);
+console.log(isMobile ? "mobile" : "not mobile");
 
 var width = window.innerWidth;
 var height = window.innerHeight;
@@ -30,7 +33,11 @@ document.querySelector("canvas#world").addEventListener("click", (e) => {
   );
   if (drawingId === -1) {
     drawingId = setInterval(() => {
-      drawing(0.015);
+      if (isMobile) {
+        drawing(0.02, 200);
+      } else {
+        drawing(0.015, 400);
+      }
     }, 1000 / 60);
   }
 });
@@ -123,7 +130,7 @@ var Boid = function (x, y, angle, gen) {
   };
 };
 
-var drawing = function (bubbleFrequency = 0.01) {
+var drawing = function (bubbleFrequency = 0.01, boidsLength = 400) {
   // 직전 틱의 canvas 상태를 가져온다.
   image = roads_context.getImageData(0, 0, width, height);
   data = image.data;
@@ -132,7 +139,11 @@ var drawing = function (bubbleFrequency = 0.01) {
     boid.update();
     // 매 틱마다 2% 확률로 새로운 직선을 추가함.
     // 완성된 직선에서 추가하는게 아니고 조금씩 그려가는 와중에 추가하는 것.
-    if (!boid.dead && Math.random() < bubbleFrequency && boids.length < 400) {
+    if (
+      !boid.dead &&
+      Math.random() < bubbleFrequency &&
+      boids.length < boidsLength
+    ) {
       boids.push(
         new Boid(
           boid.x,
