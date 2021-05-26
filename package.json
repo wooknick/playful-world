@@ -11,6 +11,7 @@
   },
   "scripts": {
     "pre-deploy": "parcel build src/index.html -d docs/",
-    "deploy": "npm run pre-deploy && gh-pages -d docs"
+    "deploy": "npm run pre-deploy && gh-pages -d docs",
+    "dev": "parcel src/index.html"
   }
 }
