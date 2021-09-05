@@ -6,15 +6,17 @@
   "author": "wooknick <wooknick@naver.com>",
   "license": "MIT",
   "devDependencies": {
-    "cssnano": "^4.1.10",
+    "cssnano": "^4.1.11",
     "gh-pages": "^3.1.0"
   },
   "scripts": {
-    "pre-deploy": "parcel build src/index.html -d docs/",
+    "clear": "rm -rf docs/",
+    "pre-deploy": "npm run clear && parcel build src/index.html -d docs/",
     "deploy": "npm run pre-deploy && gh-pages -d docs",
     "dev": "parcel src/index.html"
   },
   "dependencies": {
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "regenerator-runtime": "^0.13.7"
   }
 }
